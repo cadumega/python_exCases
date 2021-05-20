@@ -1,31 +1,43 @@
+# O programa irá receber um numero inteiro de 5 dígitos entre o valor determinado no exercício.
+# Se o usuário digitar algo fora do parâmetro, o script irá ficar repetindo até ser colocado
+#   um valor correto dentro do parâmetro.
+#Utilização de função valida intervalo
+
+def validar_dados(numero_digitado):
+        try:
+            n = int(n)
+            if n >= 10000 and n < 30001:
+                return ('Número correto, dentro do intervalo!')
+            else:
+                return ('Número incorreto, fora do intervalo!')
+        except:
+            return False
+
+
 while True:
-   num = int(input('Digite um número entre 10.000 e 30.000: '))
+    print('Seja bem-vindo ao Cadastrador de Produto.\n')
+    try:
+        numero_digitado = int(input('Digite um numero entre 10000 e 30000: '))
+    except:
+        continue
 
-   if num < 10000:
-       continue
-   if num > 30000:
-       continue
-   else:
-       a = num // 1 % 10
-       b = num // 10 % 10
-       c = num // 100 % 10
-       d = num // 1000 % 10
-       e = num // 10000 % 10
 
-       a1 = (a * 6)
-       a2 = (b * 5)
-       a3 = (c * 4)
-       a4 = (d * 3)
-       a5 = (e * 2)
-       soma = a1 + a2 + a3 + a4 + a5
+    while validar_dados(numero_digitado):
+        numero_string = str (numero_digitado)
 
-       digito = soma % 7
+    numero_cortado = list()
+    for numero in numero_string:
+        numero_cortado.append(numero)
 
-       print('{}-{}'. format(num,digito))
 
-       break
+    pesos = [2,3,4,5,6]
+    resultado = list()
 
-print(a, b, c, d, e)
-print(a1, a2, a3, a4, a5)
-print(digito)
-print(soma)
+
+    for x in numero_cortado:
+        resultado.append(int(x)*pesos[0])
+        pesos.pop(0)
+    resultado = sum(resultado) % 7
+    print('Código do Produto: Código do Produto: {}-{}\n'.format(numero_digitado,resultado))
+    break
+    break
