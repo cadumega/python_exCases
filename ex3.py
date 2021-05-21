@@ -1,91 +1,47 @@
+# O programa irá calcular a nota de um aluno, especificando a variavel nome, variavel nota 1,2,3,4 ,
+# variavel de soma dessas notas, variavel de media dessas notas. Uso de condicional simples, 
+# para condicionar valor abaixo de 7 como reprovado. Uso de dicionario, 
+# utilizando append para adicionar em lista de grupoAlunos.
+# Ao final irá printar de forma a expor o calculo das notas, o nome do aluno e sua situação.
+
+
 grupoAlunos = []
 p = soma = 0
 
+n_qtdade = int(input('Quantidade de alunos para saber as notas? '))    #Escreva um programa que leia os dados de N alunos 
+print('')
 
-for i in range (n):
+for i in range (n_qtdade):
   aluno = {'nome':0, 'n1':0, 'n2':0, 'n3':0, 'n4':0, 'situacao':0} #dicionário
 
-nome = input('Digite o nome do(a) aluno(a): ')
-  n1 = float(input('Digite a 1ª nota do(a) aluno(a): '))
-  n2 = float(input('Digite a 2ª nota do(a) aluno(a): '))
-  n3 = float(input('Digite a 3ª nota do(a) aluno(a): '))
-  n4 = float(input('Digite a 4ª nota do(a) aluno(a): '))
-  soma_notas = (n1 + n2 + n3 + n4)
-  media = (soma_notas / 4)
-  
-  if (media >= 7):
-    resultado_final = ('Aprovado')
-  else:
-    resultado_final = ('Reprovado')
-    
- #preenchimento do dicionário
-    aluno['nome'] = nome
-    aluno['n1'] = n1
-    aluno['n2'] = n2
-    aluno['n3'] = n3
-    aluno['n4'] = n4
-    aluno['situacao'] = resultado_final
-    lista_de_alunos.append(aluno)#concatenei a lista com os dados dos alunos
+nomeAluno = str(input('Digite o nome do(a) aluno(a): '))       # nome string
+n1 = float(input('Digite a 1ª nota que o(a) aluno(a) tirou: '))   # posso fixar as notas, sem precisar pergunta, comentando float em diante e substituindo por um valor de número inteiro.
+n2 = float(input('Digite a 1ª nota que o(a) aluno(a) tirou: '))
+n3 = float(input('Digite a 1ª nota que o(a) aluno(a) tirou: '))
+n4 = float(input('Digite a 1ª nota que o(a) aluno(a) tirou: '))
+somatorioNotas = (n1 + n2 + n3 + n4)
+media = (somatorioNotas / 4)
 
-  print('')
-  print('Notas dos alunos')
-  print('- ' * 10)
+if (media >= 7):
+  resultado_final = ('Aprovado')
+else:
+  resultado_final = ('Reprovado')
+    
+ #dicionario proposto  e juntar concatenando com append para adicionar item ao final da lista
+aluno['nomeAluno'] = nomeAluno
+aluno['n1'] = n1
+aluno['n2'] = n2
+aluno['n3'] = n3
+aluno['n4'] = n4
+aluno['situacao'] = resultado_final
+grupoAlunos.append(aluno)      
+
+print('')
+print('====> Nota(s) do(s) aluno(s): <====')
+print('____' * 20)
 
 #loop dos resultados que o programa irá me retornar
 
-  for aluno in lista_de_alunos: 
-    print('{} {} {} {} {} {} {}'.format(aluno['nome'], aluno['n1'],aluno['n2'], aluno['n3'], aluno['n4'],
-    media, aluno['situacao']))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-while True:
-
-  try:
-    print('---' * 10)
-    nome = input('Nome do aluno: ').strip().capitalize()
-    n1 = float(input('1a Nota: '))
-    n2 = float(input('2a Nota: '))
-    n3 = float(input('3a Nota: '))
-    n4 = float(input('4a Nota: '))
-
-    alunos[nome] = ([n1, n2, n3, n4])
-    des = input('Deseja continuar? [S/N]: ').upper().strip()[0]
-
-    if des == 'N':
-       break
-  except:
-    print('Dado inválido!')
-    
-  for i, j in alunos.items():
-      soma = j[p] + j[p+1] + j[p+2] + j[p+3]
-      
-      if soma / 4 >= 7:
-          print(f'{i}: {j[p]} {j[p+1]} {j[p+2]} {j[p+3]} Média: {soma/ 4:.1f} APROVADO!!!')
-      else:
-          print(f'{i}: {j[p]} {j[p + 1]} {j[p + 2]} {j[p+3]} Média:{soma / 4:.1f} REPROVADO :(')
+for aluno in grupoAlunos: 
+  print('{}, as suas notas ({} + {} + {} + {}) = {} de somatorio ,\n divide por 4 para cálculo de média = {} de média,\n logo você esta {}.'
+  .format(aluno['nomeAluno'], aluno['n1'],aluno['n2'], aluno['n3'], aluno['n4'],somatorioNotas, media, aluno['situacao']))
